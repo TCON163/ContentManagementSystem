@@ -10,6 +10,6 @@ import java.util.Set;
 @Repository
 public interface ModelEntityRepo extends JpaRepository<ModelEntity,Long> {
 
-    Set<Content> getAllContentById(Long id);
+
 
 }

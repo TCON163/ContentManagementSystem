@@ -6,33 +6,40 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class ModelEntity {
+public class ModelProperty {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String modelName;
-
-
-    @OneToMany(mappedBy = "model")
+    @ManyToOne
     @JsonIgnore
-    private Set<Content> contents = new HashSet<>();
+    private ModelEntity model;
 
-    @OneToMany(mappedBy = "model")
-    private List<ModelProperty> properties = new ArrayList<>();
+    @Column
+    private int dataType;
+    /*
+    *   Data type:
+    *   ByteArrayProp = 0
+    *   DateProp = 1;
+    *  .... Alphabetical.
+    * */
+
+
+    @Column
+    private String name;
+
+    @Column
+    private Boolean isShowing;
+
 
 
 
 }
+
